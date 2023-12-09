@@ -28,7 +28,11 @@ class MainActivity : AppCompatActivity() {
     private fun filterWords(lines:List<String>, reString: String) {
         val output = findViewById<MultiAutoCompleteTextView>(R.id.output)
         output.text.clear()
-        val regexp = Regex(reString)
+        var reStr = reString
+        if (reString.startsWith("*")) {
+            reStr = ".".plus(reString)
+        }
+        val regexp = Regex(reStr)
         for (line in lines) {
             if (regexp.matches(line)) {
                 output.text.append(line+"\n")
