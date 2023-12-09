@@ -8,11 +8,26 @@
     android:padding="10dp">
 
     <TextView
+        android:id="@+id/labelWordsList"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        android:text="Words List"
+        android:layout_gravity="center_vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <Spinner
+        android:id="@+id/spinner_words_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/words_list"/>
+
+    <TextView
         android:id="@+id/label"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:padding="10dp"
-        android:text="Input RexExp like ^ju[a-z]{1,2}$ or *ju or ju.*"
+        android:text="RexExp like ^ju[a-z]{1,2}$ / *ju / ju.*"
         android:layout_gravity="center_vertical"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
