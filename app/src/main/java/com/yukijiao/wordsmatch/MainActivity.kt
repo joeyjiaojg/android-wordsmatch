@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.MultiAutoCompleteTextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,11 +34,15 @@ class MainActivity : AppCompatActivity() {
         if (reString.startsWith("*")) {
             reStr = ".".plus(reString)
         }
-        val regexp = Regex(reStr)
-        for (line in lines) {
-            if (regexp.matches(line)) {
-                output.text.append(line+"\n")
+        try {
+            val regexp = Regex(reStr)
+            for (line in lines) {
+                if (regexp.matches(line)) {
+                    output.text.append(line+"\n")
+                }
             }
+        } catch (e : Exception){
+            Toast.makeText(this, "RexExp compile failed, please check your input!", Toast.LENGTH_SHORT).show()
         }
     }
 
